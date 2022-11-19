@@ -4,6 +4,8 @@ import "./App.css";
 import Book from "./components/Book";
 import Books from "./components/Books";
 import Navbar from "./components/Navbar";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -16,6 +18,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Books setBooks={setBooks} books={books} />} />
           <Route path="/:id" element={<Book />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </BrowserRouter>

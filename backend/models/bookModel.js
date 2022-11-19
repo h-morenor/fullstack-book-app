@@ -1,7 +1,3 @@
-// Title: String, required
-// Author: String, required
-// Price: Number, Required
-
 const { default: mongoose } = require("mongoose");
 
 const Schema = mongoose.Schema;
