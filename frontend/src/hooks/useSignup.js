@@ -13,7 +13,9 @@ export const useSignup = () => {
 
     const response = await fetch("/api/users/signup", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ email, password }),
     });
 
@@ -26,11 +28,11 @@ export const useSignup = () => {
     if (response.ok) {
       // Save the user and token in the localstorage
       localStorage.setItem("user", JSON.stringify(json));
-    
-      // Updating the global Auth context
-      dispatch({type: 'LOGIN', payload: json})
 
-      setIsLoading(false)
+      // Updating the global Auth context
+      dispatch({ type: "LOGIN", payload: json });
+
+      setIsLoading(false);
     }
   };
 

@@ -16,6 +16,7 @@ export const AuthProvider = ({ children }) => {
     user: null,
   });
 
+  // Update auth status when app loads for first time (authenticated if token found in localStorage)
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
 

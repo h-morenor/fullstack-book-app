@@ -34,7 +34,7 @@ UserSchema.statics.signup = async function(email, password) {
     }
 
     //salt
-    const salt = await bcrypt.genSalt(12)
+    const salt = await bcrypt.genSalt(12) // Test123!zscdvbtervfbevscd
     //hashed password
     const hashedPassword = await bcrypt.hash(password, salt)
 
@@ -68,5 +68,6 @@ UserSchema.statics.login = async function(email, password) {
 
   return user
 } 
+
 
 module.exports = mongoose.model("User", UserSchema);

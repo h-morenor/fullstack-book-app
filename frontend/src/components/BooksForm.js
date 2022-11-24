@@ -1,19 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { Auth } from "../contexts/Auth";
 
 export default function BooksForm({setBooks}) {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [price, setPrice] = useState(0);
 
+  const {user} = useContext(Auth)
+
   console.log(title);
 
   const handleAddBook = async () => {
+    if (!user) {
+      console.log('user not found!')
+      return
+    }
     const book = { title, price, author };
 
     const response = await fetch("/api/books", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${user.token}`
       },
       body: JSON.stringify(book),
     });
