@@ -1,7 +1,3 @@
-// Title: String, required
-// Author: String, required
-// Price: Number, Required
-
 const { default: mongoose } = require("mongoose");
 
 const Schema = mongoose.Schema;
@@ -20,6 +16,10 @@ const bookSchema = new Schema(
       type: Number,
       required: true,
     },
+    user_id: {
+      type: String, 
+      required: true
+    }
   },
   { timestamps: true }
 );

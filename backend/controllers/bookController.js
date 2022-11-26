@@ -7,16 +7,22 @@ const createBook = async (req, res) => {
 
   //add to a database
   try {
-    const book = await Book.create({ title, author, price });
+    const book = await Book.create({
+      title,
+      author,
+      price,
+      user_id: req.user._id,
+    });
     res.status(201).json(book);
   } catch (error) {
     res.status(400).json({ error: true, message: error.message });
-  }  
+  }
 };
 
 // Read all books
 const getBooks = async (req, res) => {
-  const books = await Book.find({});
+  const { _id } = req.user;
+  const books = await Book.find({user_id: _id});
 
   res.status(200).json(books);
 };
@@ -68,7 +74,6 @@ const deleteBook = async (req, res) => {
   }
 
   res.status(200).json(book);
-
 };
 
 module.exports = {

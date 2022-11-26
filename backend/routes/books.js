@@ -7,8 +7,12 @@ const {
   deleteBook
 } = require("../controllers/bookController");
 
+const AuthMiddleware = require("../middleware/Auth")
+
 const router = express.Router();
 const Book = require("../models/bookModel");
+
+router.use(AuthMiddleware)
 
 // GET all book
 router.get("/", getBooks);

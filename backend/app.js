@@ -1,14 +1,17 @@
 require("dotenv").config();
 
 const express = require("express");
+const cors = require('cors')
 const mongoose = require("mongoose");
 
 const booksRoutes = require("./routes/books");
+const userRoutes = require("./routes/User");
 
 // Crearting the express app
 const app = express();
 
 // Middlewares
+app.use(cors());
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -16,8 +19,9 @@ app.use((req, res, next) => {
   next();
 });
 
-//defining routes
+//Registeered routes
 app.use("/api/books", booksRoutes);
+app.use("/api/users", userRoutes);
 
 mongoose
   .connect(process.env.MONGODB_URL)
